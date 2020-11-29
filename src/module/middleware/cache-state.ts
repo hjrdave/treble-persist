@@ -9,17 +9,20 @@ const cacheState = (data: TrebleGSM.MiddlewareData) => {
     if (typeof Storage !== undefined) {
         const persistKey = data.features?.persist;
         const dispatchValue = data.dispatchValue;
+        const dispatcherType = data.dispatchPayload.reducerAction;
+        console.log(dispatcherType);
 
         //if persist key is set to true cache state
         if (persistKey) {
             //checks if the value is an object then stringify for storage
             const handleValue = (value: any) => {
-                if (typeof value === 'object') {
-                    return JSON.stringify(value);
+                const timeStamp = new Date();
+                const cachedData = {
+                    timeStamp: timeStamp,
+                    state: value
                 }
-                return value
+                return JSON.stringify(cachedData);
             }
-
             localStorage.setItem(`${lsKeyNameSpace}-${data.action}`, handleValue(dispatchValue));
         }
         else {

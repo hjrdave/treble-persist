@@ -1,3 +1,3 @@
-import RenderComp from './render-comp';
+import HydrateStateTree from './hydrate-state-tree';
 
-export default RenderComp;
+export default HydrateStateTree;
