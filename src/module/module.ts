@@ -4,6 +4,7 @@
 
 import { createModule } from 'treble-gsm';
 import cacheState from './middleware/cache-state';
+import clearCache from './middleware/clear-cache';
 import HydrateStateTree from './render-comp';
 
 const TreblePersist = createModule({
@@ -13,7 +14,7 @@ const TreblePersist = createModule({
     renderComponent: HydrateStateTree,
     middleware: {
         callback: cacheState,
-        payloadListener: () => null
+        payloadListener: clearCache
     }
 
 });
