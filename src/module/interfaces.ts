@@ -6,6 +6,6 @@ export declare namespace ITreblePersist {
 
     export interface DispatcherOptions extends TrebleGSM.DispatcherOptions { }
     export interface Dispatchers {
-
+        clearPersist: (action: string) => void
     }
 }

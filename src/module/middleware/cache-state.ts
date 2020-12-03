@@ -10,7 +10,6 @@ const cacheState = (data: TrebleGSM.MiddlewareData) => {
         const persistKey = data.features?.persist;
         const dispatchValue = data.dispatchValue;
         const dispatcherType = data.dispatchPayload.reducerAction;
-        console.log(dispatcherType);
 
         //if persist key is set to true cache state
         if (persistKey) {

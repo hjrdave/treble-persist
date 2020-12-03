@@ -12,6 +12,7 @@ const clearCache = (payload: TrebleGSM.DispatchPayload) => {
         const actionKey = payload.type;
         if (reducerAction === 'resetToInitialState' || reducerAction === 'resetAllToInitialState') {
             localStorage.removeItem(`${lsKeyNameSpace}-${actionKey}`);
+            return
         }
     } else {
         console.warn(`${treblePersistConsole} - Browser does not have local storage enabled.`);
