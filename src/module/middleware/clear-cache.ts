@@ -5,8 +5,6 @@
 import { TrebleGSM, reducerActionKeys } from 'treble-gsm';
 import { lsKeyNameSpace, treblePersistConsole } from '../globals';
 
-console.log(reducerActionKeys)
-
 const clearCache = (payload: TrebleGSM.DispatchPayload) => {
 
     if (typeof Storage !== undefined) {
