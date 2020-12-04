@@ -2,15 +2,18 @@
     Clear Cache
     - Listens for specific treble gsm dispatchers and makes sure cache is cleared if dispatched
 */
-import { TrebleGSM } from 'treble-gsm';
+import { TrebleGSM, reducerActionKeys } from 'treble-gsm';
 import { lsKeyNameSpace, treblePersistConsole } from '../globals';
+
+console.log(reducerActionKeys)
 
 const clearCache = (payload: TrebleGSM.DispatchPayload) => {
 
     if (typeof Storage !== undefined) {
         const reducerAction = payload.reducerAction;
         const actionKey = payload.type;
-        if (reducerAction === 'resetToInitialState' || reducerAction === 'resetAllToInitialState') {
+        if (reducerAction === reducerActionKeys.reset || reducerAction === reducerActionKeys.resetAll) {
+
             localStorage.removeItem(`${lsKeyNameSpace}-${actionKey}`);
             return
         }
