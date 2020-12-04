@@ -8,16 +8,18 @@ import { lsKeyNameSpace, treblePersistConsole } from '../globals';
 const cacheState = (data: TrebleGSM.MiddlewareData) => {
     if (typeof Storage !== undefined) {
         const persistKey = data.features?.persist;
+        const persistTimeout = data.features?.persistTimeout || 24;
         const dispatchValue = data.dispatchValue;
-        const dispatcherType = data.dispatchPayload.reducerAction;
 
         //if persist key is set to true cache state
         if (persistKey) {
             //checks if the value is an object then stringify for storage
+            const date = new Date();
+            date.setHours(persistTimeout);
             const handleValue = (value: any) => {
-                const timeStamp = new Date();
+                const expires = date;
                 const cachedData = {
-                    timeStamp: timeStamp,
+                    expires: expires,
                     state: value
                 }
                 return JSON.stringify(cachedData);

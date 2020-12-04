@@ -8,4 +8,8 @@ export declare namespace ITreblePersist {
     export interface Dispatchers {
         clearPersist: (action: string) => void
     }
+    export interface StoreFeatures {
+        persist: boolean,
+        persistTimeout: number
+    }
 }

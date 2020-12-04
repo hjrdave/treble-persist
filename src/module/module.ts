@@ -10,7 +10,7 @@ import clearPersist from './dispatchers/clear-persist';
 const TreblePersist = createModule({
 
     name: 'treble-persist',
-    featureKeys: ['persist'],
+    featureKeys: ['persist', 'persistTimeout'],
     renderComponent: HydrateStateTree,
     middleware: {
         callback: cacheState
