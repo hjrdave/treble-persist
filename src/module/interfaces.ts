@@ -12,7 +12,7 @@ export declare namespace ITreblePersist {
         tp_clearPersist: (action: string) => void
     }
     export interface StoreFeatures {
-        persist: boolean,
-        persistTimeout: number
+        persist?: boolean,
+        persistTimeout?: number
     }
 }
