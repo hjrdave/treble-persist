@@ -1,6 +1,6 @@
 {
   "name": "treble-persist",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "A state persistence and cache module for TrebleGSM",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -57,9 +57,11 @@
     "rimraf": "^2.6.2",
     "vsts": "^2.1.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "treble-gsm": "^3.0.6"
+  },
   "peerDependencies": {
-    "react": "^16.13.x",
+    "react": "^17.13.x",
     "treble-gsm": "^4.0.x"
   }
 }

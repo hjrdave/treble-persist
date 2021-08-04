@@ -13,7 +13,7 @@ export default function HydrateStateTree() {
             storeData?.map((stateItem: TrebleGSM.StoreItem) => {
 
                 //hydrates state if persist key is true
-                if (stateItem.features?.persist) {
+                if ((stateItem.features as any)?.persist) {
 
                     //get cached data from local storage by key
                     const cachedData: string = localStorage.getItem(`${lsKeyNameSpace}-${stateItem.action}`) || stateItem.state[0];
