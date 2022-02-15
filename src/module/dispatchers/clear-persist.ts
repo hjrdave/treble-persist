@@ -17,17 +17,6 @@ interface IClearPersist {
     ): void
 }
 const clearPersist: IClearPersist = (dispatch, action) => {
-    try {
-        if (typeof action !== 'string') {
-            throw TypeError('action prop must be a string');
-        }
-        if (typeof Storage !== undefined) {
-            localStorage.removeItem(`${lsKeyNameSpace}-${action}`);
-        } else {
-            console.warn(`${treblePersistConsole} - Browser does not have local storage enabled.`);
-        }
-    } catch (error) {
-        console.error(`${treblePersistConsole} ${error}`);
-    }
+
 }
 export default clearPersist;

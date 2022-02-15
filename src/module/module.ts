@@ -3,23 +3,23 @@
 */
 
 import { createModule } from 'treble-gsm';
-import cacheState from './middleware/cache-state';
-import HydrateStateTree from './render-comp';
-import clearPersist from './dispatchers/clear-persist';
-import clearCache from './middleware/clear-cache';
+// import cacheState from './middleware/cache-state';
+// import HydrateStateTree from './render-comp';
+// import clearPersist from './dispatchers/clear-persist';
+// import clearCache from './middleware/clear-cache';
 
 const TreblePersist = createModule({
 
     name: 'treble-persist',
     namespace: 'tp',
-    featureKeys: ['persist', 'persistTimeout'],
-    renderComponent: HydrateStateTree,
+    //featureKeys: ['persist', 'persistTimeout'],
+    //renderComponent: HydrateStateTree,
     middleware: {
-        payloadListener: clearCache,
-        callback: cacheState
+        //payloadListener: clearCache,
+        // callback: cacheState
     },
     dispatchers: {
-        'clearPersist': clearPersist,
+        //'clearPersist': clearPersist,
     }
 
 });
