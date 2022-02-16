@@ -1,6 +1,6 @@
 {
   "name": "treble-persist",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "A state persistence and cache module for TrebleGSM",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
