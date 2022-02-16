@@ -26,12 +26,16 @@ const cacheState = (stateItem: TrebleGSM.MiddlewareData) => {
             }
             else if (persistType === 'cookie' && navigator.cookieEnabled) {
                 const isSecure = persistFeatures.persistOptions?.secure;
+                const expires = persistFeatures.persistOptions?.expires;
+
+                const valueCookie = `${persistKey} = ${stateToCache};`;
+                const expireCookie = `expires=${(expires !== undefined) ? (typeof expires === 'number') ? new Date(expires * 1000) : expires : ''};`;
+                const secureCookie = (isSecure) ? 'secure;' : '';
+
                 if (stateToCache !== 'object') {
-                    const now = new Date();
-                    const time = now.getTime();
-                    const expireTime = time + 1000 * 36000;
-                    now.setTime(expireTime);
-                    document.cookie = `${persistKey}=${stateToCache}; expires=${now.toUTCString()}; ${(isSecure) ? 'secure' : ''}`
+
+                    document.cookie = `${valueCookie} ${expireCookie} ${secureCookie}`;
+
                 } else {
                     throw TypeError('Cookie must be primitive type');
                 }

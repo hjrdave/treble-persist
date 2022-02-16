@@ -15,9 +15,7 @@ export declare namespace ITreblePersist {
         persist?: boolean,
         persistOptions?: {
             type?: 'local' | 'session' | 'cookie';
-            domain?: string;
-            path?: string;
-            expires?: string;
+            expires?: number | Date;
             secure?: boolean;
         }
     }
