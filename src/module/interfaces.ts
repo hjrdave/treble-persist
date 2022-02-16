@@ -14,9 +14,7 @@ export declare namespace ITreblePersist {
     export interface StoreFeatures {
         persist?: boolean,
         persistOptions?: {
-            type?: 'local' | 'session' | 'cookie';
-            expires?: number | Date;
-            secure?: boolean;
+            type?: 'local' | 'session';
         }
     }
 }

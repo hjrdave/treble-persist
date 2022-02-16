@@ -15,8 +15,8 @@ const cacheState = (stateItem: TrebleGSM.MiddlewareData) => {
         const persistType = (persistFeatures?.persistOptions?.type) ? persistFeatures?.persistOptions?.type : 'local';
 
         if (isPersist && storageIsEnabled) {
-            const stateToCache = stateItem.dispatchValue;
-            const persistKey = `${lsKeyNameSpace}-${stateItem.action}`
+            const stateToCache = JSON.stringify(stateItem.dispatchValue);
+            const persistKey = `${lsKeyNameSpace}-${stateItem.action}`;
 
             if (persistType === 'local') {
                 localStorage.setItem(persistKey, stateToCache);
@@ -24,26 +24,7 @@ const cacheState = (stateItem: TrebleGSM.MiddlewareData) => {
             else if (persistType === 'session') {
                 sessionStorage.setItem(persistKey, stateToCache);
             }
-            else if (persistType === 'cookie' && navigator.cookieEnabled) {
-                const isSecure = persistFeatures.persistOptions?.secure;
-                const expires = persistFeatures.persistOptions?.expires;
 
-                const valueCookie = `${persistKey} = ${stateToCache};`;
-                const expireCookie = `expires=${(expires !== undefined) ? (typeof expires === 'number') ? new Date(expires * 1000) : expires : ''};`;
-                const secureCookie = (isSecure) ? 'secure;' : '';
-
-                if (stateToCache !== 'object') {
-
-                    document.cookie = `${valueCookie} ${expireCookie} ${secureCookie}`;
-
-                } else {
-                    throw TypeError('Cookie must be primitive type');
-                }
-            }
-
-            console.log('persisted');
-            console.log(stateToCache);
-            console.log(persistType);
         }
 
     } catch (error) {
