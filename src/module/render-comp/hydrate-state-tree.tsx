@@ -18,11 +18,15 @@ export default function HydrateStateTree() {
                 const persistType = (stateItem?.features?.persistOptions?.type) ? stateItem?.features?.persistOptions.type : 'local';
                 if (persistType === 'local') {
                     const cachedValue = local.get(persistKey);
-                    Store.update(stateItem.action, cachedValue, { disableMiddleware: true });
+                    if (cachedValue !== null) {
+                        Store.update(stateItem.action, cachedValue, { disableMiddleware: true });
+                    }
                 }
                 else if (persistType === 'session') {
                     const cachedValue = session.get(persistKey);
-                    Store.update(stateItem.action, cachedValue, { disableMiddleware: true });
+                    if (cachedValue !== null) {
+                        Store.update(stateItem.action, cachedValue, { disableMiddleware: true });
+                    }
                 }
             }
         });
